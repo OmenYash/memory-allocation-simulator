@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Memory Allocation Simulator</title>
+<style>
+body{font-family:Arial,sans-serif;background:#0f172a;color:#fff;display:flex;justify-content:center;align-items:center;height:100vh;margin:0}
+.container{background:#1e293b;padding:30px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.3);width:500px}
+h1{text-align:center;margin-top:0}
+select,button{width:100%;padding:12px;margin:10px 0;border:none;border-radius:10px;font-size:16px}
+select{background:#334155;color:#fff}
+button{background:#38bdf8;color:#000;font-weight:bold;cursor:pointer}
+button:hover{opacity:.9}
+#output{background:#0f172a;padding:15px;border-radius:12px;min-height:180px;white-space:pre-line;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Memory Allocation Simulator</h1>
+<select id="algo">
+<option value="first">First Fit</option>
+<option value="best">Best Fit</option>
+<option value="worst">Worst Fit</option>
+</select>
+<button onclick="runSim()">Run Simulation</button>
+<div id="output">Output will appear here...</div>
+</div>
+<script>
+function runSim(){
+let a=document.getElementById('algo').value;
+let out='';
+if(a==='first') out='First Fit:\nProcess 1 -> Block 2\nProcess 2 -> Block 5\nProcess 3 -> Block 2\nProcess 4 -> Not Allocated';
+if(a==='best') out='Best Fit:\nProcess 1 -> Block 4\nProcess 2 -> Block 2\nProcess 3 -> Block 3\nProcess 4 -> Block 5';
+if(a==='worst') out='Worst Fit:\nProcess 1 -> Block 5\nProcess 2 -> Block 2\nProcess 3 -> Block 5\nProcess 4 -> Not Allocated';
+document.getElementById('output').innerText=out;
+}
+</script>
+</body>
+</html>
